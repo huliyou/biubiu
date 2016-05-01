@@ -2,9 +2,12 @@
   "name": "application-name",
   "version": "0.0.1",
   "dependencies": {
+    "babel-polyfill": "^6.7.4",
     "history": "^2.0.1",
     "immutable": "^3.7.6",
+    "material-ui": "^0.14.4",
     "react": "^0.14.2",
+    "react-addons-shallow-compare": "^15.0.2",
     "react-dom": "^0.14.7",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",

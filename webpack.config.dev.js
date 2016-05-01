@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 // const NODE_MODULES = path.resolve(__dirname, 'node_modules');
+const isomorphicPath = path.resolve(__dirname, 'src/common/isomorphic.js');
 
 const config = {
   devtool: 'cheap-module-eval-source-map',
@@ -20,7 +21,7 @@ const config = {
       },
       {
         test: /\.css/,
-        loader: 'style!css'
+        loader: 'style!css',
       },
       {
         test: /\.scss$/,
@@ -37,12 +38,15 @@ const config = {
       },
       {
         test: /\.svg$/,
-        loader: 'babel!react-svg'
+        loader: 'babel!react-svg',
       },
     ],
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
+    alias: {
+      'isomorphic': isomorphicPath,
+    },
   },
   output: {
     path: '/dist/',

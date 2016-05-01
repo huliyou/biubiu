@@ -5,13 +5,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers/reducers';
 import { syncHistory } from 'react-router-redux';
-import { browserHistory } from 'react-router';
+import { hashHistory, Router } from 'react-router';
 
+import routes from './routes';
 
 const rootElement = document.getElementById('app');
 
 // Sync dispatched route actions to the history
-const reduxRouterMiddleware = syncHistory(browserHistory);
+const reduxRouterMiddleware = syncHistory(hashHistory);
 const createStoreWithMiddleware = applyMiddleware(
   reduxRouterMiddleware,
   thunkMiddleware
@@ -29,7 +30,9 @@ console.log('store', store.getState());
 
 render(
   <Provider store={store}>
-    {/* Your root Component */}
+    <Router history={hashHistory} >
+      {routes}
+    </Router>
   </Provider>,
   rootElement
 );
