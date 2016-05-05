@@ -7,6 +7,8 @@ import reducers from './reducers/reducers';
 import { syncHistory } from 'react-router-redux';
 import { hashHistory, Router } from 'react-router';
 
+//require('../node_modules/amazeui-touch/dist/amazeui.touch.min.css');
+
 import routes from './routes';
 
 const rootElement = document.getElementById('app');

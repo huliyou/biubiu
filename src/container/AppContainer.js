@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import { View } from 'isomorphic';
-import FontIcon from 'material-ui/lib/font-icon';
-import ActionFlightTakeoff from 'material-ui/lib/svg-icons/action/flight-takeoff';
-
+import Home from '../components/Home/Home';
+import SwipeableViews from 'react-swipeable-views';
 
 import { routeActions } from 'react-router-redux';
+
+
+import styles from '../assets/AppContainer.scss';
 
 const propTyeps = {
   // children: PropTypes.node.isRequired,
@@ -24,7 +26,7 @@ class AppContainer extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      value: 'a',
+      value: 0,
     }
   }
   // const _clickTabAtIndex = (index: number) => {
@@ -63,46 +65,50 @@ class AppContainer extends React.Component {
   }
   render() {
     return(
-      <View>
+      <View className={styles.AppContainer}>
+        <SwipeableViews
+          className={styles.content}
+          index={this.state.value}
+          onChangeIndex={this.handleChange}
+        >
+          <View>
+            <Home/>
+          </View>
+          <div>234</div>
+          <div>456</div>
+        </SwipeableViews>
         <Tabs
           value={this.state.value}
-          initialSelectedIndex={2}
-          onChange={(e) => {
-            console.log('click: ', e);
-          }}
-
+          //initialSelectedIndex={2}
+          onChange={this.handleChange}
         >
           <Tab
             label="沙龙"
-            value="a"
+            value={0}
             onClick={() => {
               this.setState({
-                value: 'a',
+                value: 0,
               });
             }}
-          >
-            <div>hehe</div>
-          </Tab>
+          />
           <Tab
             label="消息"
-            value="b"
+            value={1}
             onTouchTap ={(e) => {
               console.log('active: ', e);
             }}
             onClick={() => {
               this.setState({
-                value: 'b',
+                value: 1,
               });
             }}
-          >
-            <div>sdfsd</div>
-          </Tab>
+          />
           <Tab
             label="我的"
-            value="c"
+            value={2}
             onClick={() => {
               this.setState({
-                value: 'c',
+                value: 2,
               });
             }}
           />
